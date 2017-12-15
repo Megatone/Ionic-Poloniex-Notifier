@@ -1,5 +1,8 @@
 {
   "name": "ionic-poloniex-notifier",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }

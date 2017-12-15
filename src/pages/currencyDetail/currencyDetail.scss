@@ -1,0 +1,26 @@
+.ion-card-header {
+    background: #0a6970;
+    color: white;
+}
+
+.card-notification-label-price {
+    vertical-align: bottom;
+    font-size: 1.3em;
+}
+
+.card-notification ion-icon {
+    font-size: 1.4em;
+    vertical-align: text-top;
+    margin-left: 1em;
+}
+
+.card-notification ion-item {
+    padding: 0;
+}
+
+.toast-sucess{
+  background: #0a6970;
+}
+.toast-error{
+  background: rgb(121, 7, 7);
+}

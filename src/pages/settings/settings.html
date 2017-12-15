@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+
+    <ion-card-header class="ion-card-header">
+      <ion-icon name="clock"></ion-icon>
+      &nbsp;&nbsp; REFRESH DATA CURRENCY
+    </ion-card-header>
+
+    <ion-card-content>
+      <br>
+      <p>The configuration of the data refresh time can be important if you want to reduce your data consumption in mobile connections
+        like 3g / 4g</p>
+      <hr>
+      <ion-item>
+        <ion-label>Time refresh</ion-label>
+        <ion-select [(ngModel)]="device.refresh" *ngIf="device" (ionChange)="saveChanges()">
+          <ion-option value="2">Realtime 2 sec</ion-option>
+          <ion-option value="10">Medium 10 sec</ion-option>
+          <ion-option value="30">Slow 30 sec</ion-option>
+          <ion-option value="0">Manual 0 sec </ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+
+    <ion-card-header class="ion-card-header">
+      <ion-icon name="clock"></ion-icon>
+      &nbsp;&nbsp; NOTIFICATIONS STATUS
+    </ion-card-header>
+
+    <ion-card-content>
+      <br>
+      <p>You can allow/disallow all notifications with this option</p>
+      <hr>
+      <ion-item>
+        <ion-label>Allow notifications</ion-label>
+        <ion-toggle [(ngModel)]="device.notificationStatus" (ionChange)="saveChanges()"></ion-toggle>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

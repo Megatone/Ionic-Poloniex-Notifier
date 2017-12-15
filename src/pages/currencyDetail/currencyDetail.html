@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+
+    <ion-buttons end>
+
+      <button ion-button icon-only (click)="setUnsetFavoritePair()">
+        <ion-icon name="star-outline" *ngIf="!tick.pair.favorite"></ion-icon>
+        <ion-icon name="star" *ngIf="tick.pair.favorite"></ion-icon>
+      </button>
+
+      <button ion-button icon-only>
+        <ion-icon name="stats"></ion-icon>
+      </button>
+
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid [ngClass]="{'pulseUp': tick.pair.actualPrice > tick.pair.lastPrice, 'pulseDown': tick.pair.actualPrice < tick.pair.lastPrice}">
+    <ion-row>
+      <ion-col col-12>
+
+        <ion-card class="ion-card-header">
+          <ion-card-content>
+            <span>
+              <ion-icon name="information-circle"></ion-icon>&nbsp;&nbsp; COIN INFORMATION</span>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-content>
+            <p>Last Price : {{tick.lastPrice | formatCurrency : 8 }}</p>
+            <p>Percent :
+              <span [ngClass]="{'red' : tick.percentChange < 0 , 'green' : tick.percentChange > 0}">{{tick.percentChange * 100 | formatCurrency : 2 }}%</span>
+            </p>
+            <p>Base Volume : {{tick.baseVolume | formatCurrency : 2}}</p>
+            <p>Quote Volume : {{tick.quoteVolume | formatCurrency : 2}}</p>
+            <p>High 24h : {{tick.high24 | formatCurrency : 8}}</p>
+            <p>Low24 : {{tick.low24 | formatCurrency : 8}}</p>
+            <p>Timestamp : {{tick.timestamp | date : 'dd-MM-yyyy hh:mm:ss' }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <ion-card class="ion-card-header">
+          <ion-card-content>
+            <span>
+              <ion-icon name="notifications"></ion-icon>&nbsp;&nbsp; PUSH NOTIFICATIONS</span>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="card-notification">
+          <ion-card-content>
+            <ion-item>
+              <ion-label>
+                <span class="card-notification-label-price"> Price</span>
+                <ion-icon name="ios-arrow-forward"></ion-icon>
+              </ion-label>
+              <ion-input type="number" placeholder="Percent" [(ngModel)]="subscriptionPriceGT.value" (change)="valueSubcriptionChanged(subscriptionPriceGT)"></ion-input>
+              <ion-toggle [(ngModel)]="subscriptionPriceGT.status" (ionChange)="statusSubcriptionChanged(subscriptionPriceGT)"></ion-toggle>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="card-notification">
+          <ion-card-content>
+            <ion-item>
+              <ion-label>
+                <span class="card-notification-label-price"> Price</span>
+                <ion-icon name="ios-arrow-back"></ion-icon>
+              </ion-label>
+              <ion-input type="number" placeholder="Percent" [(ngModel)]="subscriptionPriceLT.value" (change)="valueSubcriptionChanged(subscriptionPriceLT)"></ion-input>
+              <ion-toggle [(ngModel)]="subscriptionPriceLT.status" (ionChange)="statusSubcriptionChanged(subscriptionPriceLT)"></ion-toggle>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="card-notification">
+          <ion-card-content>
+            <ion-item>
+              <ion-label>
+                <span class="card-notification-label-price">Percent</span>
+                <ion-icon name="ios-arrow-forward"></ion-icon>
+              </ion-label>
+              <ion-input type="number" placeholder="Percent" [(ngModel)]="subscriptionPercentGT.value" (change)="valueSubcriptionChanged(subscriptionPercentGT)"></ion-input>
+              <ion-toggle [(ngModel)]="subscriptionPercentGT.status" (ionChange)="statusSubcriptionChanged(subscriptionPercentGT)"></ion-toggle>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="card-notification">
+          <ion-card-content>
+            <ion-item>
+              <ion-label>
+                <span class="card-notification-label-price">Percent</span>
+                <ion-icon name="ios-arrow-back"></ion-icon>
+              </ion-label>
+              <ion-input type="number" placeholder="Percent" [(ngModel)]="subscriptionPercentLT.value" (change)="valueSubcriptionChanged(subscriptionPercentLT)"></ion-input>
+              <ion-toggle [(ngModel)]="subscriptionPercentLT.status" (ionChange)="statusSubcriptionChanged(subscriptionPercentLT)"></ion-toggle>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

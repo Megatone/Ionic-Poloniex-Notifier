@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title *ngIf="!isOn">{{title}}</ion-title>
+
+    <ion-searchbar *ngIf="isOn" [(ngModel)]="seachTerms"></ion-searchbar>
+
+    <ion-buttons end>
+
+      <button ion-button icon-only (click)="isOn = !isOn" *ngIf="!isOn">
+        <ion-icon name="ios-search"></ion-icon>
+      </button>
+
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let tick of (ticks | favorite:orderType | search: seachTerms)" [ngClass]="{'pulseUp': tick.pair.actualPrice > tick.pair.lastPrice, 'pulseDown': tick.pair.actualPrice < tick.pair.lastPrice}">
+      <table style="width:100%">
+        <tr>
+          <td style="min-width:20px !important" (click)="openCurrencyDetailPage(tick.pair)">
+            <i class="cc {{tick.currencyPair.split('_')[1]}}"></i>
+          </td>
+
+          <td style="width:20%" (click)="openCurrencyDetailPage(tick.pair)">
+            <span style="font-weight: bold;"> {{tick.currencyPair.split('_')[1]}}</span>
+          </td>
+          <td style="width:60%" (click)="openCurrencyDetailPage(tick.pair)">
+            {{tick.lastPrice | formatCurrency : 8 }}
+          </td>
+          <td style="width:20%" (click)="openCurrencyDetailPage(tick.pair)">
+            <span [ngClass]="{'red' : tick.percentChange < 0 , 'green' : tick.percentChange > 0}">{{tick.percentChange * 100 | formatCurrency : 2 }}%</span>
+            <ion-icon name="md-trending-down" class="red" *ngIf="tick.percentChange < 0"></ion-icon>
+            <ion-icon name="md-trending-up" class="green" *ngIf="tick.percentChange > 0"></ion-icon>
+
+          </td>
+          <td>
+            <ion-icon name="star-outline" *ngIf="!tick.pair.favorite" (click)="setUnsetFavoritePair(tick.pair)"></ion-icon>
+            <ion-icon name="star" *ngIf="tick.pair.favorite" (click)="setUnsetFavoritePair(tick.pair)"></ion-icon>
+          </td>
+        </tr>
+      </table>
+
+
+    </ion-item>
+  </ion-list>
+</ion-content>

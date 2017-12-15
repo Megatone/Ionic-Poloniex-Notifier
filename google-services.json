@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "673935855447",
+    "firebase_url": "https://poloniex-cd28e.firebaseio.com",
+    "project_id": "poloniex-cd28e",
+    "storage_bucket": "poloniex-cd28e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673935855447:android:8800488925a23d34",
+        "android_client_info": {
+          "package_name": "com.megatone.ionic.ethereum.wallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673935855447-18j3gvfeae7krqth2fj5s9mrfbfd9dbu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjcr4a1b-hsQNFj-ZHMP-qHbLelueUIuQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673935855447:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673935855447-18j3gvfeae7krqth2fj5s9mrfbfd9dbu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjcr4a1b-hsQNFj-ZHMP-qHbLelueUIuQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

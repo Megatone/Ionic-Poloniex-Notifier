@@ -8,6 +8,8 @@
   <ion-content>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <i class="{{p.icon}}" *ngIf="!p.ionIcon"></i>
+        <ion-icon name="{{p.icon}}" *ngIf="p.ionIcon"></ion-icon>
         {{p.title}}
       </button>
     </ion-list>
